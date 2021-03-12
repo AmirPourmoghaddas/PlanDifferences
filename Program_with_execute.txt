@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using VMS.TPS.Common.Model.API;
+using VMS.TPS.Common.Model.Types;
+
+
+namespace VMS.TPS
+{
+    public class Script
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+
+
+        public void Execute(ScriptContext context)//string[] args)
+        {
+            string[] args = { "", "", "", "", "", "", "", "" };
+            //args[0] = "$P-901";
+            //args[1] = "C3_PatientPlans";
+            //args[2] = "BreastFIF_15X";
+
+
+
+            Patient this_patient = context.Patient;
+
+
+            if (args.Length == 0)
+            {
+                MessageBox.Show("Input arguments not detected.");
+                return;
+            }
+
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+            System.Windows.Forms.Application.Run(new PlanDifferences.Form1(this_patient, args));
+
+        }
+    }
+}
